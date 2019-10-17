@@ -1,28 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <h2 class="bg-primary text-white text-center p-2">{{name}} To Do List</h2>
+   <div class="container-fluid p4">
+     <div class="row">
+       <div class="col font-weight-bold">
+         Task
+       </div>
+       <div class="col-2 font-weight-bold">
+        
+         Done
+       </div>
+     </div>
+     <div class="row" v-for="t in task" v-bind:key="t.action">
+         <div class="col">
+         {{t.action}}
+       </div>
+       <div class="col-2">
+          <input type="checkbox" v-model="t.done" class="form-check-input"/>
+         {{t.done}}
+       </div>
+
+     </div>
+   </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  data(){
+    return {
+      name:'Junaid',
+      task:[
+        {action:'buy flower',done:false},
+        {action:'buy water',done:true},
+        {action:'buy cloths',done:false},
+        {action:'buy cricket',done:true},
+        {action:'buy house',done:true},
+        {action:'buy food',done:false}
+      ]
+    }
   }
+  
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
